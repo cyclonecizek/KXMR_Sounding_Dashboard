@@ -57,8 +57,8 @@ st.sidebar.markdown('###')
 origins = st.sidebar.multiselect('Lightning?', origin_list,
                                  default= origin_list)
 st.sidebar.markdown('###')
-item1 = st.sidebar.selectbox('Item 1', item_list, index=5)
-item2 = st.sidebar.selectbox('Item 2', item_list, index=6)
+item1 = st.sidebar.selectbox('Item 1', item_list, index=9)
+item2 = st.sidebar.selectbox('Item 2', item_list, index=10)
 
 df_rng = df[(df['Month'] >= start_month) & (df['Month'] <= end_month)]
 source = df_rng[df_rng['Lightning'].isin(origins)]
