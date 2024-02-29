@@ -54,11 +54,11 @@ start_month, end_month = st.sidebar.slider(
     value=(min_month, max_month))
 
 st.sidebar.markdown('###')
-origins = st.sidebar.multiselect('Lightning?', origin_list,
+origins = st.sidebar.selectbox('Lightning?', origin_list,
                                  default=origin_list)
 st.sidebar.markdown('###')
-item1 = st.sidebar.selectbox('Item 1', item_list, index=0)
-item2 = st.sidebar.selectbox('Item 2', item_list, index=3)
+item1 = st.sidebar.selectbox('Item 1', item_list, index=5)
+item2 = st.sidebar.selectbox('Item 2', item_list, index=6)
 
 df_rng = df[(df['Month'] >= start_month) & (df['Month'] <= end_month)]
 source = df_rng[df_rng['Lightning'].isin(origins)]
