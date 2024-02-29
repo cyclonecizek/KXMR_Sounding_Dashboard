@@ -69,13 +69,13 @@ base = alt.Chart(source).properties(height=300)
 bar = base.mark_bar().encode(
     x=alt.X('count(Origin):Q', title='Number of Days'),
     y=alt.Y('Origin:N', title='Lightning?'),
-    color=alt.Color('Origin:N', legend=None)
+    color=alt.Color('Lightning:N', legend=None)
 )
 
 point = base.mark_circle(size=50).encode(
     x=alt.X(item1 + ':Q', title=item1),
     y=alt.Y(item2 + ':Q', title=item2),
-    color=alt.Color('Origin:N', title='',
+    color=alt.Color('Lightning:N', title='',
                     legend=alt.Legend(orient='bottom-left'))
 )
 
