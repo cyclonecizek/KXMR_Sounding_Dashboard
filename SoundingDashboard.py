@@ -97,7 +97,7 @@ hists = base.mark_bar(opacity=0.5, thickness=100).encode(
     y =alt.Y('count()')
         .stack(None),
 
-    alt.Color('Lightning:N')
+    color = alt.Color('Lightning:N')
     
 )
 
