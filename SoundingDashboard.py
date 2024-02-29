@@ -81,7 +81,7 @@ point = base.mark_circle(size=50).encode(
 
 reg_line = point.transform_regression(item1, item2).mark_line()
 
-params = alt.Chart(df).transform_regression(
+params = point.transform_regression(
     item1, item2, params=True
 ).mark_text(align='left').encode(
     x=alt.value(20),  # pixels from left
