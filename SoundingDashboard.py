@@ -55,7 +55,7 @@ start_month, end_month = st.sidebar.slider(
 
 st.sidebar.markdown('###')
 origins = st.sidebar.multiselect('Lightning?', origin_list,
-                                 index=1, default= origin_list)
+                                 default= origin_list)
 st.sidebar.markdown('###')
 item1 = st.sidebar.selectbox('Item 1', item_list, index=5)
 item2 = st.sidebar.selectbox('Item 2', item_list, index=6)
