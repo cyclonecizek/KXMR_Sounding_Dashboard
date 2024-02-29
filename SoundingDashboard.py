@@ -49,7 +49,7 @@ st.sidebar.title("Dashboard of KXMR Soundings 2008-2022")
 st.sidebar.markdown('###')
 st.sidebar.markdown("### *Settings*")
 start_month, end_month = st.sidebar.slider(
-    "Period",
+    "Month",
     min_value=min_month, max_value=max_month,
     value=(min_month, max_month))
 
@@ -68,7 +68,7 @@ base = alt.Chart(source).properties(height=300)
 
 bar = base.mark_bar().encode(
     x=alt.X('count(Origin):Q', title='Number of Days'),
-    y=alt.Y('Origin:N', title='Lightning?'),
+    y=alt.Y('Lightning:N', title='Lightning?'),
     color=alt.Color('Lightning:N', legend=None)
 )
 
