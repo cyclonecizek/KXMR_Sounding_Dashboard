@@ -81,12 +81,12 @@ point = base.mark_circle(size=50).encode(
 
 reg_line = point.transform_regression(item1, item2).mark_line()
 
-text = alt.Chart({'values':[{}]}).mark_text(
-    align="left", baseline="top"
-).encode(
-    x=alt.value(5),  # pixels from left
-    y=alt.value(5),  # pixels from top
-    text=alt.value(f"r: {corl:.3f}"),
+params = alt.Chart(df).transform_regression(
+    item1, item2, params=True
+).mark_text(align='left').encode(
+    x=alt.value(20),  # pixels from left
+    y=alt.value(20),  # pixels from top
+    text='rSquared:N'
 )
 
 # Layout (Content)
@@ -98,4 +98,4 @@ left_column.altair_chart(bar, theme = None, use_container_width=True)
 
 right_column.markdown(
     '**Scatter Plot of _' + item1 + '_ and _' + item2 + '_**')
-right_column.altair_chart(point+text+reg_line, theme = None, use_container_width=True)
+right_column.altair_chart(point+reg_line+params, theme = None, use_container_width=True)
