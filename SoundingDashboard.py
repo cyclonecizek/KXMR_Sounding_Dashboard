@@ -35,6 +35,8 @@ item_list = [
 # List of Origins
 origin_list = list(df['Lightning'].unique())
 
+df['Month'] = df['Month'].astype(int)
+
 # Create the column of YYYY 
 #df['YYYY'] = df['Year'].apply(lambda x: x.year)
 min_month = df['Month'].min().item()
@@ -77,21 +79,6 @@ point = base.mark_circle(size=50).encode(
                     legend=alt.Legend(orient='bottom-left'))
 )
 
-'''
-line1 = base.mark_line(size=5).encode(
-    x=alt.X('yearmonth(Year):T', title='Date'),
-    y=alt.Y('mean(' + item1 + '):Q', title=item1),
-    color=alt.Color('Origin:N', title='',
-                    legend=alt.Legend(orient='bottom-left'))
-)
-
-line2 = base.mark_line(size=5).encode(
-    x=alt.X('yearmonth(Year):T', title='Date'),
-    y=alt.Y('mean(' + item2 + '):Q', title=item2),
-    color=alt.Color('Origin:N', title='',
-                    legend=alt.Legend(orient='bottom-left'))
-)
-'''
 
 # Layout (Content)
 left_column, right_column = st.columns(2)
