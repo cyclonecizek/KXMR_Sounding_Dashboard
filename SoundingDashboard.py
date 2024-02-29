@@ -124,4 +124,6 @@ right_column.markdown(
     '**Scatter Plot of _' + item1 + '_ and _' + item2 + '_**')
 right_column.altair_chart(point+reg_line+params, theme = None, use_container_width=True)
 
-left_column.altair_chart(hists, theme = None, use_container_width=True)
+left_column.altair_chart(hists1, theme = None, use_container_width=True)
+
+right_column.altair_chart(hists2, theme = None, use_container_width=True)
