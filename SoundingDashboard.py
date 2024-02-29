@@ -64,7 +64,7 @@ df_rng = df[(df['Month'] >= start_month) & (df['Month'] <= end_month)]
 source = df_rng[df_rng['Lightning'].isin(origins)]
 
 # Content
-base = alt.Chart(source).properties(height=300)
+base = alt.Chart(source).properties(height=600)
 
 bar = base.mark_bar().encode(
     x=alt.X('count(Origin):Q', title='Number of Days'),
@@ -85,8 +85,8 @@ left_column, right_column = st.columns(2)
 
 left_column.markdown(
     '**Number of Records (' + str(start_month) + '-' + str(end_month) + ')**')
-left_column.altair_chart(bar, use_container_width=True)
+left_column.altair_chart(bar, theme = None, use_container_width=True)
 
 right_column.markdown(
     '**Scatter Plot of _' + item1 + '_ and _' + item2 + '_**')
-right_column.altair_chart(point, use_container_width=True)
+right_column.altair_chart(point, theme = None, use_container_width=True)
