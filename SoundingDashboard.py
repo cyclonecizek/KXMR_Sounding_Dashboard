@@ -90,8 +90,8 @@ params = point.transform_regression(
 )
 
 
-hists = base.mark_bar(opacity=0.5, thickness=100).encode(
-    x=alt.X(item1 + ':Q', title='')
+hists2 = base.mark_bar(opacity=0.5, thickness=100).encode(
+    x=alt.X(item2 + ':Q', title=''+item2 +'')
         .bin(step = 3), # step keeps bin size the same
 
     y =alt.Y('count()')
@@ -101,6 +101,16 @@ hists = base.mark_bar(opacity=0.5, thickness=100).encode(
     
 )
 
+hists1 = base.mark_bar(opacity=0.5, thickness=100).encode(
+    x=alt.X(item1 + ':Q', title='' + item1+ '')
+        .bin(step = 3), # step keeps bin size the same
+
+    y =alt.Y('count()')
+        .stack(None),
+
+    color = alt.Color('Lightning:N')
+    
+)
 
 
 # Layout (Content)
