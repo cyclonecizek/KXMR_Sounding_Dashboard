@@ -20,6 +20,8 @@ df.drop(columns, inplace=True, axis=1)
 #df=df[(df['Month'] > 5) & (df['Month'] < 10)]
 df=df[(df['PWAT'] <80) & (df['PWAT'] > 0)]
 
+df.columns = [column.replace(' ', '_') for column in df.columns]
+
 df['Cloud_Depth_Ratio'].fillna(0, inplace = True)
 df['Equilibrium_Level'].fillna(0, inplace = True)
 
