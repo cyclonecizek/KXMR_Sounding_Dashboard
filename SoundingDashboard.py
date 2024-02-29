@@ -89,6 +89,20 @@ params = point.transform_regression(
     text='rSquared:N'
 )
 
+
+hists = base.mark_bar(opacity=0.5, thickness=100).encode(
+    x=alt.X(item1 + ':Q', title='')
+        .bin(step = 3), # step keeps bin size the same
+
+    y =alt.Y('count()')
+        .stack(None),
+
+    alt.Color('Lightning:N')
+    
+)
+
+
+
 # Layout (Content)
 left_column, right_column = st.columns(2)
 
@@ -99,3 +113,5 @@ left_column.altair_chart(bar, theme = None, use_container_width=True)
 right_column.markdown(
     '**Scatter Plot of _' + item1 + '_ and _' + item2 + '_**')
 right_column.altair_chart(point+reg_line+params, theme = None, use_container_width=True)
+
+left_column.altair_chart(hists, theme = None, use_container_width=True)
