@@ -78,7 +78,7 @@ point = base.mark_circle(size=50).encode(
                     legend=alt.Legend(orient='bottom-left'))
 )
 
-#reg_line = point.transform_regression(item1, item2).mark_line()
+reg_line = point.transform_regression(item1, item2).mark_line()
 
 params = point.transform_regression(
     item1, item2, params=True
