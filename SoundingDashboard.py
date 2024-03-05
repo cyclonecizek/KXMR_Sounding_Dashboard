@@ -25,15 +25,14 @@ df.columns = [column.replace(' ', '_') for column in df.columns]
 df['Cloud_Depth_Ratio'].fillna(0, inplace = True)
 df['Equilibrium_Level'].fillna(0, inplace = True)
 
-# Loading the cars dataset
-#df = data.cars()
+
 
 # List of quantitative data items
 item_list = [
     col for col in df.columns if df[col].dtype in ['float64', 'int64']]
 
 # List of Origins
-origin_list = list(df['Lightning'].unique())
+lightning_list = list(df['Lightning'].unique())
 
 df['Month'] = df['Month'].astype(int)
 
@@ -54,14 +53,14 @@ start_month, end_month = st.sidebar.slider(
     value=(min_month, max_month))
 
 st.sidebar.markdown('###')
-origins = st.sidebar.multiselect('Lightning?', origin_list,
-                                 default= origin_list)
+lightning_multiselect = st.sidebar.multiselect('Lightning?', lightning_list,
+                                 default= lightning_list)
 st.sidebar.markdown('###')
 item1 = st.sidebar.selectbox('Item 1', item_list, index=9)
 item2 = st.sidebar.selectbox('Item 2', item_list, index=10)
 
 df_rng = df[(df['Month'] >= start_month) & (df['Month'] <= end_month)]
-source = df_rng[df_rng['Lightning'].isin(origins)]
+source = df_rng[df_rng['Lightning'].isin(lightning_multiselect)]
 
 # Content
 base = alt.Chart(source).properties(height=500)
@@ -79,7 +78,7 @@ point = base.mark_circle(size=50).encode(
                     legend=alt.Legend(orient='bottom-left'))
 )
 
-reg_line = point.transform_regression(item1, item2).mark_line()
+#reg_line = point.transform_regression(item1, item2).mark_line()
 
 params = point.transform_regression(
     item1, item2, params=True
@@ -117,12 +116,12 @@ hists1 = base.mark_bar(opacity=0.5, thickness=100).encode(
 left_column, right_column = st.columns(2)
 
 left_column.markdown(
-    '**Number of Records (' + str(start_month) + '-' + str(end_month) + ')**')
+    '**Number of Days during Months (' + str(start_month) + '-' + str(end_month) + ')**')
 left_column.altair_chart(bar, theme = None, use_container_width=True)
 
 right_column.markdown(
     '**Scatter Plot of _' + item1 + '_ and _' + item2 + '_**')
-right_column.altair_chart(point+reg_line+params, theme = None, use_container_width=True)
+right_column.altair_chart(point+params, theme = None, use_container_width=True)
 
 left_column.altair_chart(hists1, theme = None, use_container_width=True)
 
