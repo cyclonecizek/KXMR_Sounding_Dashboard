@@ -1,4 +1,4 @@
 streamlit
 altair
 pandas==1.5.3
-numpy
+numpy==1.23.5
